@@ -10,7 +10,7 @@ import (
 
 func main() {
 
-	csvFile := flag.String("csv", "questionandanswer.csv", "csv File for question and answer")
+	csvFile := flag.String("csv", "questionanswer.csv", "csv File for question and answer")
 	flag.Parse()
 
 	openFile, err := os.Open(*csvFile)
@@ -24,6 +24,7 @@ func main() {
 		fmt.Println("Failed to read provided csv")
 	}
 
+	//io
 	questions := parseLine(lines)
 
 	counter := 0
@@ -37,7 +38,13 @@ func main() {
 		}
 	}
 
-	fmt.Printf("Great!, You score %d out of %d", counter, len(questions))
+	if counter == 5 {
+		fmt.Printf("Perfect!, You score %d out of %d", counter, len(questions))
+	} else if counter == 4 {
+		fmt.Printf("Not bad!, You score %d out of %d", counter, len(questions))
+	} else {
+		fmt.Printf("Idiot!, You score %d out of %d", counter, len(questions))
+	}
 
 }
 
@@ -46,6 +53,7 @@ type question struct {
 	a string
 }
 
+// process
 func parseLine(lines [][]string) []question {
 	questionSlice := make([]question, len(lines))
 	for i, line := range lines {
