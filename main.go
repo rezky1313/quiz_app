@@ -43,7 +43,7 @@ func main() {
 	} else if counter == 4 {
 		fmt.Printf("Not bad!, You score %d out of %d", counter, len(questions))
 	} else {
-		fmt.Printf("Idiot!, You score %d out of %d", counter, len(questions))
+		fmt.Printf("Its okay!, You score %d out of %d", counter, len(questions))
 	}
 
 }
